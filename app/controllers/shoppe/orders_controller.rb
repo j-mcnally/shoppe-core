@@ -50,21 +50,21 @@ module Shoppe
     end
 
     def accept
-      @order.accept!(current_user)
+      @order.accept!(shoppe_current_user)
       redirect_to @order, :notice => t('shoppe.orders.accept_notice')
     rescue Shoppe::Errors::PaymentDeclined => e
       redirect_to @order, :alert => e.message
     end
 
     def reject
-      @order.reject!(current_user)
+      @order.reject!(shoppe_current_user)
       redirect_to @order, :notice => t('shoppe.orders.reject_notice')
     rescue Shoppe::Errors::PaymentDeclined => e
       redirect_to @order, :alert => e.message
     end
 
     def ship
-      @order.ship!(params[:consignment_number], current_user)
+      @order.ship!(params[:consignment_number], shoppe_current_user)
       redirect_to @order, :notice => t('shoppe.orders.ship_notice')
     end
 

@@ -13,7 +13,7 @@
       %header.logo
         %h1= link_to "Shoppe", root_path
         %p v#{Shoppe::VERSION}
-      %p.logged= t('.logged_in_as', user_name: current_user.full_name)
+      %p.logged= t('.logged_in_as', user_name: shoppe_current_user.full_name)
 
       %ul
         - for item in Shoppe::NavigationManager.find(:admin_primary).items

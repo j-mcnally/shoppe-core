@@ -38,7 +38,7 @@ module Shoppe
     end
 
     def destroy
-      raise Shoppe::Error, t('shoppe.users.self_remove_error') if @user == current_user
+      raise Shoppe::Error, t('shoppe.users.self_remove_error') if @user == shoppe_current_user
       @user.destroy
       redirect_to :users, :flash => {:notice => t('shoppe.users.destroy_notice') }
     end
